@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>One Page Navigation CSS Menu</title>
+  <meta name="designer" content="Alberto Hartzet">
+  <meta name="programer" content="Alberto Hartzet">
+  <meta name="author" content="Alberto Hartzet">
+  <meta name="description" content="One page navigation with pure CSS">
+  <!--<meta property="og:url" content="https://codepen.io/hrtzt/details/NPZKRN">-->
+  <meta property="og:image" content="https://pbs.twimg.com/media/CCNJN_XUMAAJSzU.jpg:large">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css'>
+  <link rel="stylesheet" type="text/css" href="menu_style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+  <style>
+    input[type=number],
+    select,
+    input[type=text],
+    input[type=date],
+    input[type=datetime-local]{
+      width: 20%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    font {
+      display: inline-block;
+      width: 150px;
+      border: 1px;
+    }
+
+    input[type=submit] {
+      width: 10%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+
+    input[type=button] {
+      width: 10%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type=button]:hover {
+      background-color: #45a049;
+    }
+
+    button[type=button] {
+      width: 10%;
+      background-color: #bd0000;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type=button]:hover {
+      background-color: #bd0000;
+    }
+
+    form {
+      border-radius: 5px;
+      padding: 10px;
+    }
+  </style>
+  <script>
+    var obj, dbParam, xmlhttp, myObj, x, txt = "";
+    obj = { "airport": "fullName", "limit": 5 };
+    dbParam = JSON.stringify(obj);
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        //txt += "<select name = \"airport\">"
+        for (x in myObj) {
+          txt += "<option>" + myObj[x].fullName + "</option>";
+        }
+        //txt += "</select>"
+        document.getElementById("airport").innerHTML = txt;
+      }
+    };
+    xmlhttp.open("GET", "getAirport.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("x=" + dbParam);
+
+    var obj2, dbParam2, xmlhttp2, myObj2, x2, txt2 = "";
+    obj2 = { "airport": "fullName", "limit": 5 };
+    dbParam2 = JSON.stringify(obj2);
+    xmlhttp2 = new XMLHttpRequest();
+    xmlhttp2.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myObj2 = JSON.parse(this.responseText);
+        //txt2 += "<select name = \"airport1\">"
+        for (x2 in myObj2) {
+          txt2 += "<option>" + myObj2[x2].fullName + "</option>";
+        }
+        //txt2 += "</select>"
+        document.getElementById("airport1").innerHTML = txt2;
+      }
+    };
+    xmlhttp2.open("GET", "getAirport.php", true);
+    xmlhttp2.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp2.send("x2=" + dbParam2);
+
+    var obj3, dbParam3, xmlhttp3, myObj3, x3, txt3 = "";
+    obj3 = { "aircraft": "aircraftID", "limit": 5 };
+    dbParam3 = JSON.stringify(obj3);
+    xmlhttp3 = new XMLHttpRequest();
+    xmlhttp3.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myObj3 = JSON.parse(this.responseText);
+        //txt3 += "<select name = \"aircraft\">"
+        for (x3 in myObj3) {
+          txt3 += "<option>" + myObj3[x3].aircraftID + "</option>";
+        }
+        //txt3 += "</select>"
+        document.getElementById("aircraft").innerHTML = txt3;
+      }
+    };
+    xmlhttp3.open("GET", "getAircraft.php", true);
+    xmlhttp3.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp3.send("x3=" + dbParam3);
+
+    var obj4, dbParam4, xmlhttp4, myObj4, x4, txt4 = "";
+    obj4 = { "airport": "fullName", "limit": 5 };
+    dbParam4 = JSON.stringify(obj4);
+    xmlhttp4 = new XMLHttpRequest();
+    xmlhttp4.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myObj4 = JSON.parse(this.responseText);
+        //txt4 += "<select name = \"airportName\">"
+        for (x4 in myObj4) {
+          txt4 += "<option>" + myObj4[x4].fullName + "</option>";
+        }
+        //txt4 += "</select>"
+        document.getElementById("airportName").innerHTML = txt4;
+      }
+    };
+    xmlhttp4.open("GET", "getAirport.php", true);
+    xmlhttp4.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp4.send("x4=" + dbParam4);
+
+    var obj5, dbParam5, xmlhttp5, myObj5, x5, txt5 = "";
+    obj5 = { "airline": "airlineName", "limit": 5 };
+    dbParam5 = JSON.stringify(obj5);
+    xmlhttp5 = new XMLHttpRequest();
+    xmlhttp5.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        myObj5 = JSON.parse(this.responseText);
+        //txt5 += "<select name = \"airline\">"
+        for (x5 in myObj5) {
+          txt5 += "<option>" + myObj5[x5].airlineName;
+        }
+        //txt5 += "</select>"
+        document.getElementById("airline").innerHTML = txt5;
+      }
+    };
+    xmlhttp5.open("GET", "getAirline.php", true);
+    xmlhttp5.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp5.send("x5=" + dbParam5);
+  </script>
+  <script>
+    // script for zipcode
+    function showStateCity(str) {
+      //State
+      var xhttp;
+
+      if (str == "") {
+        document.getElementById("state_auto").innerHTML = "";
+        return;
+      }
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("state_auto").value = this.responseText;
+        }
+      };
+      xhttp.open("GET", "getState.php?q=" + str, true);
+      xhttp.send();
+
+      //City
+      var xhttp2;
+
+      if (str == "") {
+        document.getElementById("city_auto").innerHTML = "";
+        return;
+      }
+      xhttp2 = new XMLHttpRequest();
+      xhttp2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("city_auto").value = this.responseText;
+        }
+      };
+      xhttp2.open("GET", "getCity.php?c=" + str, true);
+      xhttp2.send();
+
+      //Timezone
+      var xhttp3;
+
+      if (str == "") {
+        document.getElementById("time_auto").innerHTML = "";
+        return;
+      }
+      xhttp3 = new XMLHttpRequest();
+      xhttp3.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("time_auto").value = this.responseText;
+        }
+      };
+      xhttp3.open("GET", "getTimezone.php?t=" + str, true);
+      xhttp3.send();
+
+      //Tax
+      var xhttp4;
+
+      if (str == "") {
+        document.getElementById("tax_auto").innerHTML = "";
+        return;
+      }
+      xhttp4 = new XMLHttpRequest();
+      xhttp4.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("tax_auto").value = this.responseText;
+        }
+      };
+      xhttp4.open("GET", "getTax.php?tax=" + str, true);
+      xhttp4.send();
+    }
+  //end zipcode
+  </script>
+  <script>
+    $(document).ready(function () {
+      var i = 1;
+      $('#addLandmark').click(function () {
+        i++;
+        $('#dynamic_field_lm').append('<p id="row' + i + '"><font size="4">Landmark Name</font><input type="text" name="lmname[]" placeholder="Enter landmark\'s name" class="form-control name_list" required/><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Remove</button></p>');
+      });
+      $(document).on('click', '.btn_remove', function () {
+        var button_id = $(this).attr("id");
+        $('#row' + button_id + '').remove();
+      });
+      $('#submitLM').click(function () {
+        $.ajax({
+          url: "Landmark_register.php",
+          method: "POST",
+          data: $('#add_lmname').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_lmname')[0].reset();
+          }
+        });
+      });
+    });
+
+    $(document).ready(function () {
+      var i = 1;
+      $('#addPM').click(function () {
+        i++;
+        $('#dynamic_field_pm').append('<p id="row' + i + '"><font size="4">Unit</font><select name="unit[]"><option value="Dollar">Dollar</option><option value="Percent">Percent</option></select><font size="4">Value</font><input type="number" name="Value[]" placeholder="Enter value" required><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Remove</button></p>');
+      });
+      $(document).on('click', '.btn_remove', function () {
+        var button_id = $(this).attr("id");
+        $('#row' + button_id + '').remove();
+      });
+      $('#submitPM').click(function () {
+        $.ajax({
+          url: "Promotion_register.php",
+          method: "POST",
+          data: $('#add_promo').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_promo')[0].reset();
+          }
+        });
+      });
+    });
+
+    $(document).ready(function () {
+      var i = 1;
+      $('#addCT').click(function () {
+        i++;
+        $('#dynamic_field_c').append('<p id="row' + i + '"><font size="4">Car Type</font><input type="text" name="carType[]" placeholder="Enter car\'s type" class="form-control name_list" required/><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Remove</button></p>');
+      });
+      $(document).on('click', '.btn_remove', function () {
+        var button_id = $(this).attr("id");
+        $('#row' + button_id + '').remove();
+      });
+      $('#submitCT').click(function () {
+        $.ajax({
+          url: "Cartype_register.php",
+          method: "POST",
+          data: $('#add_car').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_car')[0].reset();
+          }
+        });
+      });
+    });
+
+    $(document).ready(function () {
+      $('#submitLeg').click(function () {
+        $.ajax({
+          url: "Leg_register.php",
+          method: "POST",
+          data: $('#add_leg').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_leg')[0].reset();
+          }
+        });
+      });
+    });
+
+    $(document).ready(function () {
+      var i = 1;
+      $('#addAL').click(function () {
+        i++;
+        $('#dynamic_field_al').append('<p id="row' + i + '"><font size="4">Airline Name</font><input type="text" name="AirlineName[]" placeholder="Enter airline\'s name" required><button type="button" name="remove" id="' + i + '" class="btn btn-danger btn_remove">Remove</button></p>');
+      });
+      $(document).on('click', '.btn_remove', function () {
+        var button_id = $(this).attr("id");
+        $('#row' + button_id + '').remove();
+      });
+      $('#submitAL').click(function () {
+        $.ajax({
+          url: "Airline_register.php",
+          method: "POST",
+          data: $('#add_al').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_al')[0].reset();
+          }
+        });
+      });
+    });
+
+    $(document).ready(function () {
+      $('#submitAC').click(function () {
+        $.ajax({
+          url: "Aircraft_register.php",
+          method: "POST",
+          data: $('#add_ac').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_ac')[0].reset();
+          }
+        });
+      });
+    });
+
+    $(document).ready(function () {
+      $('#submitAP').click(function () {
+        $.ajax({
+          url: "Airport_register.php",
+          method: "POST",
+          data: $('#add_ap').serialize(),
+          success: function (data) {
+            alert(data);
+            $('#add_ap')[0].reset();
+          }
+        });
+      });
+    });
+  </script>
+</head>
+
+<body>
+
+  <div class="ct" id="t1">
+    <div class="ct" id="t2">
+      <div class="ct" id="t3">
+        <div class="ct" id="t4">
+          <div class="ct" id="t5">
+            <div class="ct" id="t6">
+              <div class="ct" id="t7">
+                <div class="ct" id="t8">
+                  <ul id="menu">
+                    <a href="#t1">
+                      <li class="icon fa fa-home" id="uno"></li>
+                    </a>
+                    <a href="#t2">
+                      <li class="icon fa fa-building-o" id="dos"></li>
+                    </a>
+                    <a href="#t3">
+                      <li class="icon fa fa-paper-plane-o" id="tres"></li>
+                    </a>
+                    <a href="#t4">
+                      <li class="icon fa fa-gavel" id="cuatro"></li>
+                    </a>
+                    <a href="#t5">
+                      <li class="icon fa fa-car" id="cinco"></li>
+                    </a>
+                    <a href="#t6">
+                      <li class="icon fa fa-map-marker" id="six"></li>
+                    </a>
+                    <a href="#t7">
+                      <li class="icon fa fa-rocket" id="seven"></li>
+                    </a>
+                    <a href="#t8">
+                      <li class="icon fa fa-money" id="eight"></li>
+                    </a>
+                  </ul>
+
+
+
+                  <div class="page" id="p1">
+                    <section class="icon fa fa-home">
+                      <span class="title">Admin Section</span>
+                      <span class="hint">Welcome to Travalokel Administrator Managment Section.</span>
+                      <a class="hint" href="analysis" target="_top">Analysis Report</a>
+                    </section>
+                  </div>
+
+
+
+                  <div class="page" id="p2">
+                    <!-- <section class="icon fa fa-building-o"> -->
+                    <!--<span class="title">Airport</span>
+                    <span class="hint">Like this pen to see the magic!...<br>
+                    Just kidding, it won't happen anything but I'll be really happy If you do so.</span>-->
+                    <!-- </section> -->
+                    <h2>Admisnistration Managing Section - Airport Register Form
+                      <br>
+                    </h2>
+                    <form name="add_ap" id="add_ap">
+                      <p>
+                        <font size="4">Airport Name</font>
+                        <input type="text" name="AirportName" placeholder="Enter airport's name" required>
+                        <br>
+                        <font size="4">Code Name</font>
+                        <input type="text" name="CodeName" placeholder="Enter name's code" required>
+                        <br>
+                        <font size="4">Zipcode</font>
+                        <input type="text" name="Zipcode" onkeyup="showStateCity(this.value)" placeholder="Enter zipcode" required>
+                        <br>
+                        <font size="4">State</font>
+                        <input type="text" name="State" id="state_auto" placeholder="Enter state">
+                        <br>
+                        <font size="4">City</font>
+                        <input type="text" name="City" id="city_auto" placeholder="Enter city">
+                        <br>
+                        <font size="4">Timezone</font>
+                        <input type="text" name="Timezone" id="time_auto" placeholder="Enter timezone">
+                        <br>
+                        <font size="4">Tax</font>
+                        <input type="text" name="Tax" id="tax_auto" placeholder="Enter tax">
+                      </p>
+                      <input type="button" name="submitAP" id="submitAP" class="btn btn-info" value="Submit" />
+                    </form>
+                  </div>
+
+
+
+                  <div class="page" id="p3">
+                    <!--<section class="icon fa fa-paper-plane-o">
+                    <span class="title">Airline</span>
+                    </section>-->
+                    <h2>Admisnistration Managing Section - Airline Register Form
+                      <br>
+                    </h2>
+                    <form name="add_al" id="add_al">
+                      <font size="4">Airport Name</font>
+                      <select name="airportName" id="airportName"></select>
+                      <h2>-- Airline Lists -- </h2>
+                      <p id="dynamic_field_al">
+                        <font size="4">Airline Name</font>
+                        <input type="text" name="AirlineName[]" placeholder="Enter airline's name" required>
+                      </p>
+                      <button type="button" name="addAL" id="addAL" class="btn btn-success">Add More</button>
+                      <br>
+                      <input type="button" name="submitAL" id="submitAL" class="btn btn-info" value="Submit" />
+                    </form>
+                  </div>
+
+
+
+                  <div class="page" id="p4">
+                    <!--<section class="icon fa fa-gavel">
+                    <span class="title">Aircraft</span>
+                    </section>-->
+                    <h2>Admisnistration Managing Section - Aircraft Register Form
+                      <br>
+                    </h2>
+                    <form name="add_ac" id="add_ac">
+                      <p>
+                        <font size="4">Aircraft ID</font>
+                        <input type="text" name="AircraftID" placeholder="Enter aircraft's ID" required>
+                        <br>
+                        <font size="4">Airline Name</font>
+                        <select name="airline" id="airline"></select>
+                        <br>
+                        <font size="4">Economy Amount</font>
+                        <input type="number" name="economyAmount" placeholder="Enter amount" required>
+                      </p>
+                      <input type="button" name="submitAC" id="submitAC" class="btn btn-info" value="Submit" />
+                    </form>
+
+                  </div>
+
+
+
+                  <div class="page" id="p5">
+                    <!--<section class="icon fa fa-car">
+                      <span class="title">Car</span>
+                      <p class="hint">
+                        <a href="https://dribbble.com/albertohartzet" target="_blank">Im ready to play,
+                          <span class="hint line-trough">invite me </span> find me</a>
+                      </p>
+                      <p class="hint">Already invited by
+                        <a href="http://www.dribbble.com/mrpeters" target="_blank">Stan Peters</a>
+                      </p>
+                    </section>-->
+                    <h2>Admisnistration Managing Section - Car Register Form
+                      <br>
+                    </h2>
+                    <form name="add_car" id="add_car">
+                      <!--Car ID:<input type="number" name="carID" required>-->
+                      <p id="dynamic_field_c">
+                        <font size="4">Car Type</font>
+                        <input type="text" name="carType[]" placeholder="Enter car's type" class="form-control name_list" required/>
+                      </p>
+                      <button type="button" name="addCT" id="addCT" class="btn btn-success">Add More</button>
+                      <br>
+                      <input type="button" name="submitCT" id="submitCT" class="btn btn-info" value="Submit" />
+                    </form>
+                  </div>
+
+
+
+                  <div class="page" id="p6">
+                    <!--<section class="icon fa fa-map-marker">
+                    <span class="title">Landmark</span>
+                    <p class="hint">
+                    <span>You love one page & CSS only stuff? </span><br/>
+                    <a href="https://codepen.io/hrtzt/details/pgXMYb/" target="_blank">check this pen "Pure CSS One page vertical navigation"</a>
+                    </p>
+                    </section>-->
+                    <h2>Admisnistration Managing Section - Landmark Register Form
+                      <br>
+                    </h2>
+                    <form name="add_lmname" id="add_lmname">
+                      <p id="dynamic_field_lm">
+                        <font size="4">Landmark Name</font>
+                        <input type="text" name="lmname[]" placeholder="Enter landmark's name" class="form-control name_list" required/>
+                      </p>
+                      <button type="button" name="addLandmark" id="addLandmark" class="btn btn-success">Add More</button>
+                      <br>
+                      <input type="button" name="submitLM" id="submitLM" class="btn btn-info" value="Submit" />
+                    </form>
+                  </div>
+
+
+
+                  <div class="page" id="p7">
+                    <!--<section class="icon fa fa-rocket"><span class="title">Leg</span></section>-->
+                    <h2>Admisnistration Managing Section - Leg Register Form
+                      <br>
+                    </h2>
+                    <form name="add_leg" id="add_leg">
+                      <p>
+                        <font size="4">Origin</font>
+                        <select name="airport" id="airport"></select>
+                        <br>
+                        <font size="4">Destination</font>
+                        <select name="airport1" id="airport1"></select>
+                        <br>
+                        <font size="4">Operate Aircraft</font>
+                        <select name="aircraft" id="aircraft"></select>
+                        <br>
+                        <font size="4">Starting Date</font>
+                        <input type="datetime-local" name="Starting_Date" required>
+                        <font size="4">Ending Date</font>
+                        <input type="datetime-local" name="Ending_Date" required>
+                        <br>
+                        <font size="4">Price</font>
+                        <input type="Number" name="Price" placeholder="Enter price" required>
+                      </p>
+                      <input type="button" name="submitLeg" id="submitLeg" class="btn btn-info" value="Submit" />
+                    </form>
+                  </div>
+
+
+
+                  <div class="page" id="p8">
+                    <h2>Admisnistration Managing Section - Promotion Register Form
+                      <br>
+                    </h2>
+                    <form name="add_promo" id="add_promo">
+                      <!--Promotion ID:
+                      <input type="text" name="PromoID">
+                      <br>-->
+                      <p id="dynamic_field_pm">
+                        <font size="4">Unit</font>
+                        <select name="unit[]">
+                          <option value="Dollar">Dollar</option>
+                          <option value="Percent">Percent</option>
+                        </select>
+                        <font size="4">Value</font>
+                        <input type="number" name="Value[]" placeholder="Enter value" required>
+                      </p>
+                      <button type="button" name="addPM" id="addPM" class="btn btn-success">Add More</button>
+                      <br>
+                      <input type="button" name="submitPM" id="submitPM" class="btn btn-info" value="Submit" />
+                    </form>
+                    <!--<section class="icon fa fa-money"><span class="title">Promotion</span></section>-->
+                  </div>
+                </div>
+                <!-- t8-->
+              </div>
+              <!-- t7-->
+            </div>
+            <!-- t6-->
+          </div>
+          <!-- t5-->
+        </div>
+        <!-- t4-->
+      </div>
+      <!-- t3-->
+    </div>
+    <!-- t2-->
+  </div>
+  <!-- t1-->
+
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>

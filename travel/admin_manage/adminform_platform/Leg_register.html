@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Leg Register</title>
+</head>
+<body>
+<script>
+var obj, dbParam, xmlhttp, myObj, x, txt = "";
+obj = { "airport":"codeName", "limit":5};
+dbParam = JSON.stringify(obj);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        txt += "<select name = \"airport\">"
+        for (x in myObj) {
+            txt += "<option>" + myObj[x].codeName;
+        }
+        txt += "</select>"
+        document.getElementById("airport").innerHTML = txt;
+    }
+};
+xmlhttp.open("GET", "getAirport.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+
+var txt1 = "";
+obj = { "airport":"codeName", "limit":5};
+dbParam = JSON.stringify(obj);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        myObj = JSON.parse(this.responseText);
+        txt1 += "<select name = \"airport1\">"
+        for (x in myObj) {
+            txt1 += "<option>" + myObj[x].codeName;
+        }
+        txt1 += "</select>"
+        document.getElementById("airport1").innerHTML = txt1;
+    }
+};
+xmlhttp.open("GET", "getAirport.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+
+var txt2 = "";
+obj = { "aircraft":"aircraftID", "limit":5};
+dbParam = JSON.stringify(obj);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+        	myObj = JSON.parse(this.responseText);
+       		txt2 += "<select name = \"aircraft\">"
+      		for (x in myObj) {
+        		txt2 += "<option>" + myObj[x].aircraftID;
+        }
+        txt2 += "</select>"
+        document.getElementById("aircraft").innerHTML = txt2;
+    }
+};
+xmlhttp.open("GET", "getAircraft.php", true);
+xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+xmlhttp.send("x=" + dbParam);
+</script>
+	
+
+	<form action="Leg_register.php" method="post">
+		<h2>Admisnistration Managing Section - Leg Register Form<br></h2>
+		<font size="4">Origin</font>
+		<p id = "airport"></p><br>
+		<font size="4">Destination</font>
+		<p id = "airport1"></p><br>
+		<font size="4">Operate Aircraft</font>
+		<p id = "aircraft"></p><br>
+		<font size="4">Starting Date</font>
+		StartDate:<input type="Date" name="Starting_Date" required>
+		<font size="4">Ending Date</font>
+		EndDate:<input type="Date" name="Ending_Date" required><br>
+		Price:<input type="Number" name="Price" required><br>
+		<input type = "submit">
+	</form>
+</body>
+</html>
